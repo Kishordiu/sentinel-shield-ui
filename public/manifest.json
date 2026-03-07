@@ -1,0 +1,16 @@
+{
+  "name": "ZeroTrust IoT",
+  "short_name": "ZT-IoT",
+  "description": "Autonomous Zero-Trust Self-Defending IoT System",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#0066CC",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
