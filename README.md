@@ -1,37 +1,58 @@
-# SENTINEL SHIELD
+# Sentinel Shield
 
-![SENTINEL SHIELD cinematic hero](https://capsule-render.vercel.app/api?type=rect&color=0:070707,100:171717&height=230&text=SENTINEL%20SHIELD&fontColor=F3F3EE&fontSize=40&fontAlignY=38&desc=ZERO-TRUST%20%2F%20TAMPER%20RESPONSE&descColor=999991&descSize=12&descAlignY=66&animation=scaleIn)
+Sentinel Shield is a zero-trust IoT control-plane prototype focused on secure device onboarding, identity, trust-state visibility and operator response workflows.
 
-> **ZERO-TRUST / TAMPER RESPONSE.**
+> **Project status:** Functional UI / architecture prototype. Hardware enforcement and service integrations should be verified independently before production use.
 
-## THE PREMISE
+## Core concepts
 
-Sentinel Shield is the control-plane experience for an autonomous zero-trust IoT concept: secure hardware onboarding, device identity, trust-state enforcement and visible tamper response.
+- Device identity and onboarding
+- Trust-state visibility and operator actions
+- Explicit approval, compromised and lockdown states
+- A user interface designed to keep backend and hardware contracts visible
 
-## THE EXPERIENCE
+Consult the source for the exact flows implemented in this revision; a UI state is not proof that an external device has been secured.
 
-**A device is not trusted forever.**  \n**Onboarding is a security boundary.**  \n**Tamper changes what the system allows.**
+## Run locally
 
-## THE SYSTEM
-
-Device identity flows lead into verification, trust-state evaluation and operator visibility. The UI models approval, compromised and lockdown states while keeping the hardware/backend contracts explicit.
-
-## THE STACK
-
-React 18 · TypeScript · Vite · Tailwind CSS · shadcn/ui · React Router · Supabase · Recharts · Vitest
-
-## RUN
+**Requirements:** Node.js 20 or newer and npm.
 
 ```bash
-npm install\nnpm run dev
+npm ci
+cp .env.example .env
+npm run dev
 ```
 
-## PROJECT STATE
+Vite prints the local development URL in the terminal.
 
-**Security architecture / functional control-plane prototype**
+## Environment
 
-The repository documents the capabilities that are actually implemented; future integrations are intentionally separated from the current product surface.
+Create a local `.env` file from `.env.example` and set your own values:
+
+| Variable | Purpose |
+| --- | --- |
+| `VITE_SUPABASE_URL` | Your Supabase project URL |
+| `VITE_SUPABASE_ANON_KEY` | Your Supabase publishable/anon client key |
+
+Vite-exposed variables are public in the built frontend. Do not place service-role keys, passwords or private provider credentials in `VITE_*` variables. Apply and test Supabase RLS policies for every exposed table.
+
+## Quality checks
+
+```bash
+npm run build
+npm run lint
+npm run test
+```
+
+The test script uses Vitest. Run these checks on the commit you intend to ship.
+
+## Stack
+
+React · TypeScript · Vite · Tailwind CSS · shadcn/ui · React Router · Supabase · Recharts · Vitest
+
+## Security note
+
+This is a prototype UI. Do not rely on client-side controls as an authorization boundary; enforce security on the server and in database policies.
 
 ---
-
-<p align="center"><strong>K. KISHOR KUMAR</strong><br><sub>ENGINEERING / PRODUCT / SYSTEMS</sub></p>
+Maintained by [K. Kishor Kumar](https://github.com/Kishordiu).
